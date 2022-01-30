@@ -15,7 +15,7 @@ bcyan="\033[1;36m"
 white="\033[0;37m"
 nc="\033[00m"
 
-version="1.0"
+version="1.1"
 
 ask = green + '[' + white + '?' + green + '] '+ yellow
 success = yellow + '[' + white + '√' + yellow + '] '+green
@@ -32,7 +32,7 @@ logo=f'''
 {blue} |  ___/ | | |  ___/| '_ \| / __| '_ \ / _ \ '__|
 {red} | |   | |_| | |    | | | | \__ \ | | |  __/ |   
 {yellow} |_|    \__, |_|    |_| |_|_|___/_| |_|\___|_|   
-{green}         __/ |                          {cyan}[v1.0]
+{green}         __/ |                          {cyan}[v1.1]
 {cyan}        |___/                   {red}[By KasRoudra]
 '''
 
