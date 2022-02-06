@@ -15,7 +15,7 @@ bcyan="\033[1;36m"
 white="\033[0;37m"
 nc="\033[00m"
 
-version="1.0"
+version="1.1"
 
 ask = green + '[' + white + '?' + green + '] '+ yellow
 success = yellow + '[' + white + '√' + yellow + '] '+green
